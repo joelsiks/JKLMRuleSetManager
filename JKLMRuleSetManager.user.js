@@ -243,7 +243,7 @@ function removeRuleSet() {
     // Remove the rule set
     savedRuleSets.splice(index, 1);
     GM_setValue(SAVED_RULES_GMKEY, savedRuleSets);
-    
+
     RSLog(`Removed rule set "${ruleSetName}"`);
     alert(`Rule set "${ruleSetName}" has been removed.`);
 

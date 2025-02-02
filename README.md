@@ -1,8 +1,9 @@
 # JKLMRuleSetManager
 
-A script for saving/installing sets of rules for PopSauce on [https://jklm.fun/](https://jklm.fun/). If you and your friend have found the perfect set of tags to filter and scoring setup, you can save the currently selected rules and then easily install them whenever you create a new lobby.
+A user script for saving and applying sets of rules for PopSauce on [https://jklm.fun/](https://jklm.fun/). If you and your friends have found the perfect combination of tags and rules, this script allows you to save them and quickly reapply them when creating a new lobby.
 
+## Requirements
 This script requires a user script manager. I recommend [Violentmonkey](https://violentmonkey.github.io/).
 
-Click [HERE](JKLMRuleSetManager.user.js?raw=1) to be prompted to install the userscript in your script manager.
-
+## Installation
+Click [HERE](JKLMRuleSetManager.user.js?raw=1) to install the user script in your script manager.
