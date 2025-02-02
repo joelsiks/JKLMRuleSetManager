@@ -4,5 +4,5 @@ A script for saving/installing sets of rules for PopSauce on [https://jklm.fun/]
 
 This script requires a user script manager. I recommend [Violentmonkey](https://violentmonkey.github.io/).
 
-Click [HERE](JKLMRuleSetManager.user.js) to be prompted to install the userscript in your script manager.
+Click [HERE](JKLMRuleSetManager.user.js?raw=1) to be prompted to install the userscript in your script manager.
 
