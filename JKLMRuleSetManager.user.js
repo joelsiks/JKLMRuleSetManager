@@ -84,13 +84,17 @@ function installRuleSet(ruleSet) {
     }
 }
 
+function isDefaultSetName(name) {
+    return name.toLowerCase() === RULE_SET_DEFAULT.name.toLowerCase();
+}
+
 function getRuleSet(name) {
     const savedRuleSets = GM_getValue(SAVED_RULES_GMKEY, []);
     return savedRuleSets.find(ruleSet => ruleSet.name === name) || BAD_RESULT;
 }
 
 function setRuleSet(ruleSet) {
-    if (ruleSet.name.toLowerCase() === RULE_SET_DEFAULT.name.toLowerCase()) {
+    if (isDefaultSetName(ruleSet.name)) {
         alert(`The default rule set "${RULE_SET_DEFAULT.name}" cannot be modified.`);
         return;
     }
@@ -200,7 +204,7 @@ function saveCurrentRuleSet() {
         return;
     }
 
-    if (ruleSetName.toLowerCase() === RULE_SET_DEFAULT.name.toLowerCase()) {
+    if (isDefaultSetName(ruleSet.name)) {
         alert(`The default rule set "${RULE_SET_DEFAULT.name}" cannot be overwritten.`);
         return;
     }
@@ -219,7 +223,7 @@ function removeRuleSet() {
         return;
     }
 
-    if (ruleSetName.toLowerCase() === RULE_SET_DEFAULT.name.toLowerCase()) {
+    if (isDefaultSetName(ruleSet.name)) {
         alert(`The default rule set "${RULE_SET_DEFAULT.name}" cannot be removed.`);
         return;
     }
