@@ -279,6 +279,7 @@ function installUtility() {
     // Create, setup and install rule set selector
     const ruleSetSelectorSelect = document.createElement("select");
     ruleSetSelectorSelect.id = RULE_SET_SELECTOR_ID;
+    ruleSetSelectorSelect.classList.add("styled");
     ruleSetSelectorSelect.onchange = setCurrentRuleSetToSelected;
     appendWithSpacing(ruleSetSelectorSelect);
 
