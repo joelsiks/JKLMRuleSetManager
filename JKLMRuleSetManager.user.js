@@ -256,6 +256,9 @@ function installUtility() {
         return;
     }
 
+    // Remove all whitespace from the bottomJoin
+    bottomJoin.innerHTML = bottomJoin.innerHTML.trim().replace(/>\s+</g, '><');
+
     function appendWithSpacing(element) {
         element.style.marginLeft = "8px";
         bottomJoin.appendChild(element);
