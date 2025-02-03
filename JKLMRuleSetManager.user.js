@@ -2,7 +2,7 @@
 // @name         JKLMRuleSetManager
 // @namespace    http://tampermonkey.net/
 // @version      2025-01-31
-// @description  A manager for saving/installing sets of rules for PopSauce on https://jklm.fun/
+// @description  A user script for saving and applying sets of rules for PopSauce on https://jklm.fun/
 // @author       Joel Sikström
 // @match        *://*.jklm.fun/*
 // @grant        GM_setValue
@@ -139,15 +139,7 @@ function readCurrentRuleSetFromInput(name) {
     const challengeDuration = Number(getValueOfInputField("challengeDuration"));
     const tags = getTagsFromInput();
 
-    const ruleSet = {
-        name: name,
-        scoreGoal: scoreGoal,
-        scoring: scoring,
-        challengeDuration: challengeDuration,
-        tags: tags
-    };
-
-    return ruleSet;
+    return { name, scoreGoal, scoring, challengeDuration, tags };
 }
 
 function setCurrentRuleSetToSelected() {
@@ -209,7 +201,7 @@ function saveCurrentRuleSet() {
     }
 
     if (ruleSetName.toLowerCase() === RULE_SET_DEFAULT.name.toLowerCase()) {
-        alert(`The default rule set "${RULE_SET_DEFAULT.name}" cannot be removed.`);
+        alert(`The default rule set "${RULE_SET_DEFAULT.name}" cannot be overwritten.`);
         return;
     }
 
@@ -265,19 +257,17 @@ function installUtility() {
         bottomJoin.appendChild(element);
     }
 
-    // Create, setup and install add button
-    const saveRuleSetButton = document.createElement("button");
-    saveRuleSetButton.className = "styled joinRound";
-    saveRuleSetButton.innerText = "Save Rule Set";
-    saveRuleSetButton.onclick = saveCurrentRuleSet;
-    appendWithSpacing(saveRuleSetButton);
+    function createAndInstallButton(text, onClickFunction) {
+        const newButton = document.createElement("button");
+        newButton.className = "styled joinRound";
+        newButton.innerText = text;
+        newButton.onclick = onClickFunction;
+        appendWithSpacing(newButton);
+    }
 
-    // Create, setup and install remove button
-    const removeRuleSetButton = document.createElement("button");
-    removeRuleSetButton.className = "styled joinRound";
-    removeRuleSetButton.innerText = "Remove Rule Set";
-    removeRuleSetButton.onclick = removeRuleSet;
-    appendWithSpacing(removeRuleSetButton);
+    // Add buttons
+    createAndInstallButton("Save Rule Set", saveCurrentRuleSet);
+    createAndInstallButton("Remove Rule Set", removeRuleSet);
 
     // Create, setup and install rule set selector
     const ruleSetSelectorSelect = document.createElement("select");
